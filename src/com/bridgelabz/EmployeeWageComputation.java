@@ -29,7 +29,7 @@ public class EmployeeWageComputation {
                     System.out.println("working days: " + workingday);
                     System.out.println("EmpWage: " + empwage);
                     totalempwage = empwage + totalempwage;
-                    workinhHrs = workinhHrs + FULL_DAY_HOUR;
+                    workinhHrs = workinhHrs + PART_TIME_HOUR;
                     break;
                 default:
                     System.out.println("Employee is Abscent");
