@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 public class EmployeeWageComputation {
     static final int WAGE_PER_HOUR = 20;
+    static final int TOTAL_WORKING_HRS=100;
     static final int WORKIN_DAY_PER_MONTH = 20;
     static final int FULL_DAY_HOUR = 8;
     static final int PART_TIME_HOUR = 4;
@@ -11,7 +12,7 @@ public class EmployeeWageComputation {
     public static void main(String[] args) {
         int empwage = 0, workingday = 1, totalempwage = 0, workinhHrs=0;
         System.out.println("--------Welcome to Employee Wage Computation Problem--------");
-        while (workingday <= WORKIN_DAY_PER_MONTH) {
+        while (workingday <= WORKIN_DAY_PER_MONTH && workinhHrs<=TOTAL_WORKING_HRS) {
             double empcheck = (int) Math.floor(Math.random() * 10) % 3;
             switch ((int) empcheck) {
                 case FULLTIME:
