@@ -8,9 +8,9 @@ public class EmployeeWageComputation {
     static final int FULLTIME = 1;
     static final int PARTTIME = 2;
     //static method for calculate empWage
-     static void computeEmpWage(String CompanyName,int working_day_per_month,int total_working_hours,int wage_per_hour){
+    void computeEmpWage(String CompanyName,int working_day_per_month,int total_working_hours,int wage_per_hour) {
 
-        int empwage = 0, workingday = 1, totalempwage = 0, workinhHrs=0;//local variable computeEmpWage Block
+         int empwage = 0, workingday = 1, totalempwage = 0, workinhHrs = 0;
 
         while (workingday <= working_day_per_month && workinhHrs<=total_working_hours) {
             double empcheck = (int) Math.floor(Math.random() * 10) % 3;
@@ -42,13 +42,16 @@ public class EmployeeWageComputation {
             }
             workingday++;
         }
-        System.out.println("--------------");
+        System.out.println("-----------------------------------");
         System.out.println("\nCompany Name :"+CompanyName+ "\nTotal Working Hrs:>" + workinhHrs + "\n-------------- \nTotal Wage:>" + totalempwage);
+        System.out.println("----------------------------------");
     }
 
     public static void main(String[] args) {
         System.out.println("--------Welcome to Employee Wage Computation Problem--------");
-        computeEmpWage("Reliance",26,150,15);
-        computeEmpWage("TATA",20,100,25);
+        EmployeeWageComputation employeeWageComputation=new EmployeeWageComputation();
+        employeeWageComputation.computeEmpWage("Reliance",26,150,15);
+        employeeWageComputation.computeEmpWage("TATA",20,100,25);
+        employeeWageComputation.computeEmpWage("Google",22,120,25);
     }
 }
