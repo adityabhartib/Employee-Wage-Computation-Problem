@@ -3,21 +3,9 @@ package com.bridgelabz;
 public class EmployeeWageComputation implements EmpWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-    private CompanyEmpWage[] companyEmpWages;
-
-    public EmployeeWageComputation() {
-        companyEmpWages = new CompanyEmpWage[5];
-    }
-
-    private void setTotalWage() {
-        for (int i = 0; i < companyEmpWages.length; i++) {
-            System.out.println(companyEmpWages[i]);
-
-        }
-    }
         @Override
         public void calculateEmpWage(String companyName, int wagePerHrs, int numOfWorkingDays, int numOfWorkingHrs) {
-            int empHrs, totalEmpHrs = 0, totalWorkingDays = 0, totalEmpWage;
+            int empHrs, totalEmpHrs = 0, totalWorkingDays = 0, totalEmpWage=0;
 
             while (totalEmpHrs <= numOfWorkingHrs && totalWorkingDays <= numOfWorkingDays) {
 
@@ -25,26 +13,34 @@ public class EmployeeWageComputation implements EmpWage {
 
                 switch ((int) empCheck) {
                     case IS_PART_TIME:
-//                    System.out.println("Employee is Present as PART TIME");
+                    System.out.println("Employee is Present as PART TIME");
                         empHrs = 4;
                         totalEmpHrs += empHrs;
+                        totalEmpWage+=empHrs*wagePerHrs;
+                        System.out.println("Total Wage :"+totalEmpWage);
                         break;
                     case IS_FULL_TIME:
                         System.out.println("Employee is Present as FULL TIME");
                         empHrs = 8;
                         totalEmpHrs += empHrs;
+                        totalEmpWage+=empHrs*wagePerHrs;
+                        System.out.println("Total Wage :"+totalEmpWage);
                         break;
                     default:
                         System.out.println("Employee is Absent");
                         empHrs = 0;
                         totalEmpHrs += empHrs;
+                        totalEmpWage+=empHrs*wagePerHrs;
+                        System.out.println("Total Wage :"+totalEmpWage);
                         break;
                 }
                 totalWorkingDays++;
+                totalEmpWage++;
                 System.out.println("Day No :" + totalWorkingDays + " Emp Hrs: " + empHrs);
             }
             totalEmpWage = totalEmpHrs * wagePerHrs;
             System.out.println("Total Wage For Company :" + totalEmpWage);
+            System.out.println("Total Working Hrs for "+companyName+" :"+totalEmpHrs);
         }
 
         public static void main(String[] args) {
