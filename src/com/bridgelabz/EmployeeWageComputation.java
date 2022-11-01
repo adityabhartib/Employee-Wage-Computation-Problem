@@ -16,46 +16,44 @@ public class EmployeeWageComputation {
     }
     public void calculateEmpWage() {
         // Local Variables
-        int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
-        //Compute Emp Wage for Month
-        while( totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numWorkingDays) {
-            totalWorkingDays++;     //Incrementing Working Days
+        int empHrs, totalEmpHrs = 0, totalWorkingDays = 0;
+
+        while( totalEmpHrs <= maxHrsPerMonth && totalWorkingDays <= numWorkingDays) {
+
             double empCheck = Math.floor(Math.random() * 10) % 3;
 
             switch ((int) empCheck) {
                 case IS_PART_TIME:
                     System.out.println("Employee is Present as PART TIME");
                     empHrs = 4;
+                    totalEmpHrs+=empHrs;
                     break;
                 case IS_FULL_TIME:
                     System.out.println("Employee is Present as FULL TIME");
                     empHrs = 8;
+                    totalEmpHrs+=empHrs;
                     break;
                 default:
                     System.out.println("Employee is Absent");
                     empHrs = 0;
+                    totalEmpHrs+=empHrs;
                     break;
             }
-            totalEmpHrs += empHrs;
+            totalWorkingDays++;
             System.out.println("Day No :"+ totalWorkingDays +" Emp Hrs: "+ empHrs);
         }
         totalEmpWage = totalEmpHrs * wagePerHr;
+        System.out.println("Total Wage For Company :"+companyName+"  is "+totalEmpWage);
     }
-    @Override
-    public String toString() {
-        return "Total Employee Wage for Company : "+ companyName +" is : "+totalEmpWage;
-    }
-
-
     public static void main(String[] args) {
         System.out.println("--------Welcome to Employee Wage Computation Problem--------");
-        EmployeeWageComputation jio = new EmployeeWageComputation("JIO",100,20,26);
+        EmployeeWageComputation jio = new EmployeeWageComputation("JIO",15,22,100);
 
-        EmployeeWageComputation vodafone = new EmployeeWageComputation("VODAFONE",110,25,25);
+        EmployeeWageComputation vodafone = new EmployeeWageComputation("VODAFONE",20,25,140);
+        System.out.println("JIo");
         jio.calculateEmpWage();
-        System.out.println(jio.toString());
         System.out.println("-----------------------------------------");
+        System.out.println("Vodafone");
         vodafone.calculateEmpWage();
-        System.out.println(vodafone.toString());
     }
 }
