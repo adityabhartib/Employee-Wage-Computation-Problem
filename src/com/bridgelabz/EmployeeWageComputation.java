@@ -1,22 +1,22 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
+
 public class EmployeeWageComputation {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-    private String companyName;
-    private int wagePerHr;
-    private int numWorkingDays;
-    private int maxHrsPerMonth;
-    private int totalEmpWage;
-    public EmployeeWageComputation(String companyName, int wagePerHr, int numWorkingDays, int maxHrsPerMonth) {
-        this.companyName = companyName;
-        this.wagePerHr = wagePerHr;
-        this.numWorkingDays = numWorkingDays;
-        this.maxHrsPerMonth = maxHrsPerMonth;
+    private  CompanyEmpWage[]companyEmpWages;
+    public EmployeeWageComputation(){
+        companyEmpWages=new CompanyEmpWage[5];
     }
-    public void calculateEmpWage() {
-        // Local Variables
-        int empHrs, totalEmpHrs = 0, totalWorkingDays = 0;
+    private  void setTotalWage(){
+        for (int i=0; i< companyEmpWages.length; i++){
+            System.out.println(companyEmpWages[i]);
+            
+        }
+    }
+    public static int calculateEmpWage(String companyName, int wagePerHr, int numWorkingDays, int maxHrsPerMonth) {
+        int empHrs, totalEmpHrs = 0, totalWorkingDays = 0,totalEmpWage;
 
         while( totalEmpHrs <= maxHrsPerMonth && totalWorkingDays <= numWorkingDays) {
 
@@ -24,7 +24,7 @@ public class EmployeeWageComputation {
 
             switch ((int) empCheck) {
                 case IS_PART_TIME:
-                    System.out.println("Employee is Present as PART TIME");
+//                    System.out.println("Employee is Present as PART TIME");
                     empHrs = 4;
                     totalEmpHrs+=empHrs;
                     break;
@@ -42,18 +42,17 @@ public class EmployeeWageComputation {
             totalWorkingDays++;
             System.out.println("Day No :"+ totalWorkingDays +" Emp Hrs: "+ empHrs);
         }
-        totalEmpWage = totalEmpHrs * wagePerHr;
-        System.out.println("Total Wage For Company :"+companyName+"  is "+totalEmpWage);
+        totalEmpWage=totalEmpHrs*wagePerHr;
+        return totalEmpWage;
+
     }
     public static void main(String[] args) {
         System.out.println("--------Welcome to Employee Wage Computation Problem--------");
-        EmployeeWageComputation jio = new EmployeeWageComputation("JIO",15,22,100);
 
-        EmployeeWageComputation vodafone = new EmployeeWageComputation("VODAFONE",20,25,140);
         System.out.println("JIo");
-        jio.calculateEmpWage();
+        calculateEmpWage("Jio",15,24,100);
         System.out.println("-----------------------------------------");
         System.out.println("Vodafone");
-        vodafone.calculateEmpWage();
+        calculateEmpWage("Vodafone",20,25,110);
     }
 }
